@@ -9,6 +9,7 @@ int get_final_sum(long card_number, int first_sum);
 int get_two_first_digits(long n);
 int get_first_digit(long n);
 bool is_even(long n);
+string get_card_name(long card_number);
 
 int main(void)
 {
@@ -26,26 +27,8 @@ int main(void)
   }
   else
   {
-    int two_first_digits = get_two_first_digits(card_number);
-    int digits = count_digits(card_number);
-    int first_digit = get_first_digit(card_number);
-
-    if ((two_first_digits == 34 || two_first_digits == 37) && digits == 15)
-    {
-      printf("AMEX\n");
-    }
-    else if ((two_first_digits == 51 || two_first_digits == 52 || two_first_digits == 53 || two_first_digits == 54 || two_first_digits == 55) && digits == 16)
-    {
-      printf("MASTERCARD\n");
-    }
-    else if ((digits == 16 || digits == 13) && first_digit == 4)
-    {
-      printf("VISA\n");
-    }
-    else
-    {
-      printf("INVALID\n");
-    }
+    string card_name = get_card_name(card_number);
+    printf("%s", card_name);
   }
 }
 
@@ -161,4 +144,30 @@ int get_first_digit(long n)
     }
   }
   return n;
+}
+
+string get_card_name(long card_number)
+{
+  int two_first_digits = get_two_first_digits(card_number);
+  int digits = count_digits(card_number);
+  int first_digit = get_first_digit(card_number);
+  string card_name;
+
+  if ((two_first_digits == 34 || two_first_digits == 37) && digits == 15)
+  {
+    card_name = "AMEX\n";
+  }
+  else if ((two_first_digits == 51 || two_first_digits == 52 || two_first_digits == 53 || two_first_digits == 54 || two_first_digits == 55) && digits == 16)
+  {
+    card_name = "MASTERCARD\n";
+  }
+  else if ((digits == 16 || digits == 13) && first_digit == 4)
+  {
+    card_name = "VISA\n";
+  }
+  else
+  {
+    card_name = "INVALID\n";
+  }
+  return card_name;
 }
