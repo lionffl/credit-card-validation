@@ -9,3 +9,5 @@ A simple program in C that check if a number is a valid credit card number.
 1) CS50 Library for C: 
 `https://cs50.readthedocs.io/libraries/cs50/c/`
 
+# Compile instructions
+`gcc credit.c -lcs50 -o credit`
