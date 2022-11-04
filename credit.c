@@ -6,8 +6,7 @@ int count_digits(long n);
 int sum_digits(long n);
 int get_first_sum(long n);
 int get_final_sum(long card_number, int first_sum);
-int get_two_first_digits(long n);
-int get_first_digit(long n);
+int get_subnumber_by_index(long n, int index);
 bool is_even(long n);
 string get_card_name(long card_number);
 
@@ -116,29 +115,14 @@ int get_final_sum(long card_number, int first_sum)
   return check_sum;
 }
 
-int get_two_first_digits(long n)
+int get_subnumber_by_index(long n, int index)
 {
   int digits = count_digits(n);
 
   for (int i = 0; i < digits; i++)
   {
     n = n / 10;
-    if (count_digits(n) == 2)
-    {
-      break;
-    }
-  }
-  return n;
-}
-
-int get_first_digit(long n)
-{
-  int digits = count_digits(n);
-
-  for (int i = 0; i < digits; i++)
-  {
-    n = n / 10;
-    if (count_digits(n) == 1)
+    if (count_digits(n) == index)
     {
       break;
     }
@@ -148,9 +132,9 @@ int get_first_digit(long n)
 
 string get_card_name(long card_number)
 {
-  int two_first_digits = get_two_first_digits(card_number);
+  int two_first_digits = get_subnumber_by_index(card_number, 2);
   int digits = count_digits(card_number);
-  int first_digit = get_first_digit(card_number);
+  int first_digit = get_subnumber_by_index(card_number, 1);
   string card_name;
 
   if ((two_first_digits == 34 || two_first_digits == 37) && digits == 15)
