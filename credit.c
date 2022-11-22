@@ -8,7 +8,7 @@ int get_first_sum(long n);
 int get_final_sum(long card_number, int first_sum);
 int get_subnumber_by_index(long n, int index);
 bool is_even(long n);
-string get_card_name(long card_number);
+char* get_card_name(long card_number);
 
 int main(void)
 {
@@ -26,7 +26,7 @@ int main(void)
   }
   else
   {
-    string card_name = get_card_name(card_number);
+    char* card_name = get_card_name(card_number);
     printf("%s", card_name);
   }
 }
@@ -130,18 +130,18 @@ int get_subnumber_by_index(long n, int index)
   return n;
 }
 
-string get_card_name(long card_number)
+char* get_card_name(long card_number)
 {
+  int first_digit = get_subnumber_by_index(card_number, 1);
   int two_first_digits = get_subnumber_by_index(card_number, 2);
   int digits = count_digits(card_number);
-  int first_digit = get_subnumber_by_index(card_number, 1);
   string card_name;
 
   if ((two_first_digits == 34 || two_first_digits == 37) && digits == 15)
   {
     card_name = "AMEX\n";
   }
-  else if ((two_first_digits == 51 || two_first_digits == 52 || two_first_digits == 53 || two_first_digits == 54 || two_first_digits == 55) && digits == 16)
+  else if ((two_first_digits >= 51 && two_first_digits <= 55) && digits == 16)
   {
     card_name = "MASTERCARD\n";
   }
